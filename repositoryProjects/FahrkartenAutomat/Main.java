@@ -13,10 +13,14 @@ public class Main {
         double eingeworfeneMuenze;
         double rueckgabebetrag;
         double nochZuZahlen;
+        int anzahlTickets;
 
         // 1
         System.out.print("Zu zahlender Betrag (Euro): ");
         zuZahlenderBetrag = tastatur.nextDouble();
+        System.out.println("wie viele Tickets möchtest du ?");
+        anzahlTickets = tastatur.nextInt();
+        zuZahlenderBetrag *= anzahlTickets;
 
         // 2
         eingezahlterGesamtbetrag = 0.0;
@@ -31,6 +35,7 @@ public class Main {
 
         // 3
         System.out.println("\nFahrschein wird ausgegeben");
+        System.out.printf("Sie haben %s Fahrscheine gekauft. \n", anzahlTickets);
         for (int i = 0; i < 8; i++) {
         System.out.print("=");
         try {
