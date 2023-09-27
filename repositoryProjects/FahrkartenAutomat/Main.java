@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    /*
+    */
     public static void main(String[] args) {
 
         Scanner tastatur = new Scanner(System.in);
@@ -20,6 +22,10 @@ public class Main {
         zuZahlenderBetrag = tastatur.nextDouble();
         System.out.println("wie viele Tickets möchtest du ?");
         anzahlTickets = tastatur.nextInt();
+        if (!(anzahlTickets <= 10 && anzahlTickets > 0)) {
+            anzahlTickets = 1;
+            System.out.println("Ungültige Eingabe, Tickets = 1");
+        }
         zuZahlenderBetrag *= anzahlTickets;
 
         // 2
@@ -27,9 +33,13 @@ public class Main {
         nochZuZahlen = 0.0;
         while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
         nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-        System.out.println("Noch zu zahlen: " + nochZuZahlen);
+        System.out.printf("Noch zu zahlen: %.2f ", nochZuZahlen);
         System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
         eingeworfeneMuenze = tastatur.nextDouble();
+        switch (Double.toString(eingeworfeneMuenze)) {
+            case "0.05", "0.1", "0.2", "0.5", "1.0", "2.0", "5.0", "10.0", "20.0" -> {}
+            default -> eingeworfeneMuenze = 0;
+        }
         eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
         }
 
@@ -77,6 +87,7 @@ public class Main {
         System.out.println("5 Cent");
         rueckgabebetrag = rueckgabebetrag - 0.05;
         }
+
         }
 
         System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
