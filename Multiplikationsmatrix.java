@@ -7,9 +7,9 @@ public class Multiplikationsmatrix {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number");
         int number = scanner.nextInt();
-        int count = 1;
-        for (int i = 0; i <= 10; i++) {
-            for (int j = 0; j < 9; j++) {
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
                 if (count % number == 0 || count == number ||
                         isQuersumme(count, number)||containsNumber(count, number)) {
                     System.out.printf("%-3s ", "*");
