@@ -22,6 +22,10 @@ public class Main {
         zuZahlenderBetrag = tastatur.nextDouble();
         System.out.println("wie viele Tickets möchtest du ?");
         anzahlTickets = tastatur.nextInt();
+        while (anzahlTickets > 10 || anzahlTickets < 0) {
+            System.out.println("Idiot, kaufe 10 oder weniger Karten oder mehr als 0");
+            anzahlTickets = tastatur.nextInt();
+        }
         if (!(anzahlTickets <= 10 && anzahlTickets > 0)) {
             anzahlTickets = 1;
             System.out.println("Ungültige Eingabe, Tickets = 1");
