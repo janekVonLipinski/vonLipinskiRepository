@@ -8,6 +8,7 @@ public class Multiplikationsmatrix {
         System.out.println("Enter number");
         int number = scanner.nextInt();
         int count = 0;
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (count % number == 0 || count == number ||
