@@ -12,10 +12,10 @@ public class Multiplikationsmatrix {
             for (int j = 0; j < 9; j++) {
                 if (count % number == 0 || count == number ||
                         isQuersumme(count, number)||containsNumber(count, number)) {
-                    System.out.print("* ");
+                    System.out.printf("%-3s ", "*");
                     count++;
                 } else {
-                    System.out.print(count + " ");
+                    System.out.printf("%-3d ", count);
                     count++;
                 }
             }
