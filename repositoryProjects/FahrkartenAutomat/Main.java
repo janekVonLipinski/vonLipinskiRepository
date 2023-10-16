@@ -18,8 +18,18 @@ public class Main {
         int anzahlTickets;
 
         // 1
-        System.out.print("Zu zahlender Betrag (Euro): ");
-        zuZahlenderBetrag = tastatur.nextDouble();
+
+        System.out.println("Was für eine Fahrkarte willst du ? \n" +
+                "Kurzstrecke AB [2,00 Euro] (1) +\n" +
+                "Tageskarte AB [3,00 Euro] (2) \n" +
+                "Berlin-Brandenburg-Ticket [10,00 Euro] (3) \n" +
+                "Standard (jede andere Zahl) [4,00 Euro]");
+        switch(tastatur.nextInt()) {
+            case 1 -> zuZahlenderBetrag = 2;
+            case 2 -> zuZahlenderBetrag = 3;
+            case 3 -> zuZahlenderBetrag = 10;
+            default -> zuZahlenderBetrag = 4;
+        }
         System.out.println("wie viele Tickets möchtest du ?");
         anzahlTickets = tastatur.nextInt();
         while (anzahlTickets > 10 || anzahlTickets < 0) {
