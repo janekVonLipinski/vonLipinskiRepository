@@ -10,37 +10,54 @@ public class Main {
 
         Scanner tastatur = new Scanner(System.in);
 
-        double zuZahlenderBetrag;
+        double zuZahlenderBetrag = 0;
         double eingezahlterGesamtbetrag;
         double eingeworfeneMuenze;
         double rueckgabebetrag;
         double nochZuZahlen;
-        int anzahlTickets;
+        int anzahlTickets = 0;
+        int gesamtAnzahlTickets = 0;
 
         // 1
-
-        System.out.println("Was für eine Fahrkarte willst du ? \n" +
-                "Kurzstrecke AB [2,00 Euro] (1) +\n" +
-                "Tageskarte AB [3,00 Euro] (2) \n" +
-                "Berlin-Brandenburg-Ticket [10,00 Euro] (3) \n" +
-                "Standard (jede andere Zahl) [4,00 Euro]");
-        switch(tastatur.nextInt()) {
-            case 1 -> zuZahlenderBetrag = 2;
-            case 2 -> zuZahlenderBetrag = 3;
-            case 3 -> zuZahlenderBetrag = 10;
-            default -> zuZahlenderBetrag = 4;
-        }
-        System.out.println("wie viele Tickets möchtest du ?");
-        anzahlTickets = tastatur.nextInt();
-        while (anzahlTickets > 10 || anzahlTickets < 0) {
-            System.out.println("Idiot, kaufe 10 oder weniger Karten oder mehr als 0");
+        boolean running  = true;
+        while (running) {
+            if (zuZahlenderBetrag != 0) {
+                System.out.println("akutell zu zu zahlender Betrag" + zuZahlenderBetrag);
+            }
+            System.out.println("Was für eine Fahrkarte willst du ? \n" +
+                    "Kurzstrecke AB [2,00 Euro] (1) +\n" +
+                    "Tageskarte AB [3,00 Euro] (2) \n" +
+                    "Berlin-Brandenburg-Ticket [10,00 Euro] (3) \n" +
+                    "Standard (jede andere Zahl) [4,00 Euro]");
+            int ticketkind = tastatur.nextInt();
+            System.out.println("Wie viele Tickets willst du?");
             anzahlTickets = tastatur.nextInt();
+
+            if (gesamtAnzahlTickets + anzahlTickets < 0 || gesamtAnzahlTickets + anzahlTickets > 10) {
+                System.out.println("Keep it simple stupid + \n" +
+                        "Tickets wurden auf ursprünglichen Wert zurükgesetzt");
+                continue;
+            } else {
+                gesamtAnzahlTickets += anzahlTickets;
+            }
+
+            switch(ticketkind) {
+                case 1 -> zuZahlenderBetrag += 2 * anzahlTickets;
+                case 2 -> zuZahlenderBetrag += 3 * anzahlTickets;
+                case 3 -> zuZahlenderBetrag += 10 * anzahlTickets;
+                default -> zuZahlenderBetrag += 0;
+            }
+            System.out.println("Willst du noch mehr Fahrscheine+\n" +
+                    " Nein (1) - Ja (2)");
+            int quit = tastatur.nextInt();
+            if (quit == 1) {
+                running = false;
+            }
         }
         if (!(anzahlTickets <= 10 && anzahlTickets > 0)) {
             anzahlTickets = 1;
             System.out.println("Ungültige Eingabe, Tickets = 1");
         }
-        zuZahlenderBetrag *= anzahlTickets;
 
         // 2
         eingezahlterGesamtbetrag = 0.0;
@@ -59,7 +76,7 @@ public class Main {
 
         // 3
         System.out.println("\nFahrschein wird ausgegeben");
-        System.out.printf("Sie haben %s Fahrscheine gekauft. \n", anzahlTickets);
+        System.out.printf("Sie haben %s Fahrscheine gekauft. \n", gesamtAnzahlTickets);
         for (int i = 0; i < 8; i++) {
         System.out.print("=");
         try {
