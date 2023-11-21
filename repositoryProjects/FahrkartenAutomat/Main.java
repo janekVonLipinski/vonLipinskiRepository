@@ -19,6 +19,7 @@ public class Main {
         int gesamtAnzahlTickets = 0;
 
         // 1
+        begruessung();
         boolean running  = true;
         while (running) {
             if (zuZahlenderBetrag != 0) {
@@ -125,5 +126,9 @@ public class Main {
         + "Wir wünschen Ihnen eine gute Fahrt.");
 
         tastatur.close();
+    }
+
+    public static void begruessung() {
+        System.out.println("Herzlich Wilkommen");
     }
 }
